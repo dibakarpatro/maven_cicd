@@ -1,0 +1,17 @@
+node {
+    stage('clone'){
+        git branch: 'main', url: 'https://github.com/dibakarpatro/project-1-maven-jenkins-CICD-docker-eks-.git'
+    }
+    stage('clean'){
+        sh 'mvn clean'
+    }
+    stage('test'){
+        sh 'mvn test'
+    }
+    stage('install'){
+        sh 'mvn install'
+    }
+    stage('deployement'){
+        deploy adapters:[tomcat9(credentialsId:'tomcat',path:'',url:'http://34.235.127.169:8080/')],contextPath:null,war:'**/*.war'
+    }
+}
