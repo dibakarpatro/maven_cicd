@@ -12,6 +12,6 @@ node {
         sh 'mvn install'
     }
     stage('deployement'){
-        deploy adapters:[tomcat9(credentialsId:'tomcat',path:'',url:'http://34.235.127.169:8080/')],contextPath:null,war:'**/*.war'
+        deploy adapters: [tomcat9(credentialsId: 'tomcat', path: '', url: 'http://34.235.127.169:8080/')], contextPath: null, war: '**/*.war'
     }
 }
